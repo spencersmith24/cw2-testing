@@ -20,7 +20,7 @@ class RomanNumeralConverter:
             match character:
                 case 'i':
                     try: return_value+=4 if roman_numeral[index+1] == 'v' else 9 if roman_numeral[index+1]=='x' else 1
-                    except IndexError: pass
+                    except IndexError: return_value += 1
                     else: continue
                 case 'v':
                     try:
