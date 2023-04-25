@@ -30,5 +30,9 @@ class TestRomanNumeralConverter(TestCase):
         self.assertEqual("test value", self.converter.to_roman(1))
         # here, we assert that it doesn't convert the value anew, and rather
         # sees that the value is in the cache, and just returns that
+    
+    def test_sanity(self):
+        self.assertEqual("XLVI", 
+            self.converter.to_roman(self.converter.from_roman("XLVI")))
 
 if __name__ == '__main__': main()
