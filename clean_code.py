@@ -58,6 +58,8 @@ class RomanNumeralConverter:
         self.__roman_to_arabic_cache[roman_numeral] = return_value
         return return_value
     def to_roman(self, arabic_number: int):
+        if type(arabic_number) is not int:
+            raise TypeError("Expected type int, got %s"%str(type(arabic_number)))
         if arabic_number in self.__arabic_to_roman_cache.keys():
             return self.__arabic_to_roman_cache[arabic_number]
         if arabic_number<4000:
