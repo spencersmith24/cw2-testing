@@ -11,7 +11,9 @@ class RomanNumeralConverter:
             return self.to_roman(item)
         else: raise ValueError("Cannot subscript RomanNumeralConverter with '%s', expected 'str' or 'int'"%type(item))
 
-    def from_roman(self, roman_number: int):
+    def from_roman(self, roman_number: str):
+        if type(roman_number) is not str:
+            raise TypeError("Expected type str, got %s"%str(type(roman_number)))
         roman_numeral = roman_number.lower()
         if roman_numeral in self.__roman_to_arabic_cache.keys():
             return self.__roman_to_arabic_cache[roman_numeral]
