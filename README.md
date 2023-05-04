@@ -24,3 +24,10 @@ In the file at the root of the directory called `test_RomanNumeralConverter.py`,
 * An argument is passed containing something that is not a supported character
 * It pulls from the cache
 * It adds to the cache upon a successful new conversion
+
+### Successful conversion
+First, we'll make a new test under the last one, `test_sanity`. Add a line of code defining a method called `test_from_roman_conversion`. In it, add an assertion stating that `self.converter.from_roman("lxxiii")` should return `73`. Then, run the file with `python test_RomanNumeralConverter.py`! If everything worked correctly, you should see "OK" at the bottom of the test output. If it doesn't, the code should look something like this:
+```py
+def test_from_roman_conversion(self):
+    self.assertEqual(self.converter.from_roman("lxxiii"), 73)
+```
