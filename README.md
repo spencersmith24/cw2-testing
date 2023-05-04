@@ -27,6 +27,7 @@ In the file at the root of the directory called `test_RomanNumeralConverter.py`,
 
 ### Successful conversion
 First, we'll make a new test under the last one, `test_sanity`. Add a line of code defining a method called `test_from_roman_conversion`. In it, add an assertion stating that `self.converter.from_roman("lxxiii")` should return `73`. Then, run the file with `python test_RomanNumeralConverter.py`! If everything worked correctly, you should see "OK" at the bottom of the test output. If it doesn't, the code should look something like this:
+
 ```py
 def test_from_roman_conversion(self):
     self.assertEqual(self.converter.from_roman("lxxiii"), 73)
@@ -34,8 +35,30 @@ def test_from_roman_conversion(self):
 
 ### Error handling
 For our second test, we'll need to test that an exception is raised. Although this is technically something we don't want to see happen, it's still intended functionality that we should test—if there is an issue in the code that catches the error and raises the exception, or an exception isn't raised at all, the end-user may be improperly informed of the error in the method. Thus, we raise exceptions manually to inform the user of what they've done wrong, and we should test for these to make sure they work as intended. Inside a test called `test_from_roman_unsupported_char`, we use the `assertRaises` method in a context manager, asserting it raises `ValueError` when we call the method with an arbitrary non-Roman-numeral letter.
+
 ```py
 def test_from_roman_unsupported_char(self):
     with self.assertRaises(ValueError):
         self.converter.from_roman("q")
+```
 
+### Pulls from cache
+For this test, we'll have to access the private cache attribute of the `RomanNumeralConverter` class, `test_from_roman_reads_cache`. Since it's "private," Python "mangles" the name, so we can access it using `self.converter._RomanNumeralConverter__roman_to_arabic_cache`. A mouthful, but still accessible. Insert an arbitrary key and value, and assert that calling `from_roman` with your key returns the value.
+
+```py
+def test_from_roman_cache(self):
+    self.converter._RomanNumeralConverter__roman_to_arabic_cache["I"] = "test value"
+    self.assertEqual(self.converter.from_roman("I"), "test value")
+```
+
+### Adds to cache
+Here, in `test_from_roman_appends_cache`, we can flip the order of the last test, asserting after we call `from_roman` with an arbitrary Roman numeral that afterwards the value is found in the cache.
+
+```py
+def test_from_roman_appends_cache(self):
+    self.converter.from_roman("lxxiii") # an arbitrary value
+    self.assertEqual(
+        self.converter._RomanNumeralConverter__roman_to_arabic_cache["LXXIII"],
+        73
+    )
+```
