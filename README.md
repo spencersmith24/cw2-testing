@@ -17,3 +17,10 @@ Starting off with errors, as they're easy to organize, add a header for them: `#
 ### Behavior
 This module's behavior is rather simple—all it does is convert Roman numerals into integers. To be truly thorough, we would have to explain the entire system of Roman numerals, but to save time, we'll leave it up to our readers to search for it on their own. Thus, we can add to the file something like…
 > This method takes in a parameter containing a Roman numeral (from I to M) and converts it into an integer. For example, if passed `"I"`, it'll return `1`, and if passed `"lxxiii"`, it will return 73 (L := 50 + X := 10 + X + I := 1 + I + I).
+
+## Unit Testing
+In the file at the root of the directory called `test_RomanNumeralConverter.py`, you'll find the four unit tests written during the presentation. Underneath these, we'll test some functionality of the other method in the class, `from_roman`. First, we need to develop test cases—what should we test about this method, based on our specification? To keep it brief, we'll stick to four tests:
+* Method works as normal, using an arbitrary Roman numeral
+* An argument is passed containing something that is not a supported character
+* It pulls from the cache
+* It adds to the cache upon a successful new conversion
