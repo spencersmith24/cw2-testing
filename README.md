@@ -102,4 +102,6 @@ Finally, the code to be run, whose `name:` is something like `run unit tests`, a
   run: python3 test_RomanNumeralConverter.py
 ```
 
-Commit the code you've written and push it to the remote repository! If there's an issue, you'll receive an email pretty quick—GitHub sends emails by default if an automated job fails to run for whatever reason. However, if it runs successfully, you can look on the repository's page on GitHub and see the test results, along with all of the output.
+Commit the code you've written and push it to the remote repository! If there's an issue, you'll receive an email pretty quick—GitHub sends emails by default if an automated job fails to run for whatever reason. However, if it runs successfully, you can look on the repository's page on GitHub and see the test results, along with all of the output. If all went well, you should see a check mark and some output that looks like this:
+
+![image](https://user-images.githubusercontent.com/70546234/236312333-5ba17fb0-1c07-482d-b939-f2dcc02b62dd.png)
