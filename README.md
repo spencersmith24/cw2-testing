@@ -31,3 +31,11 @@ First, we'll make a new test under the last one, `test_sanity`. Add a line of co
 def test_from_roman_conversion(self):
     self.assertEqual(self.converter.from_roman("lxxiii"), 73)
 ```
+
+### Error handling
+For our second test, we'll need to test that an exception is raised. Although this is technically something we don't want to see happen, it's still intended functionality that we should test—if there is an issue in the code that catches the error and raises the exception, or an exception isn't raised at all, the end-user may be improperly informed of the error in the method. Thus, we raise exceptions manually to inform the user of what they've done wrong, and we should test for these to make sure they work as intended. Inside a test called `test_from_roman_unsupported_char`, we use the `assertRaises` method in a context manager, asserting it raises `ValueError` when we call the method with an arbitrary non-Roman-numeral letter.
+```py
+def test_from_roman_unsupported_char(self):
+    with self.assertRaises(ValueError):
+        self.converter.from_roman("q")
+
