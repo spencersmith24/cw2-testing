@@ -62,3 +62,44 @@ def test_from_roman_appends_cache(self):
         73
     )
 ```
+
+## Continuous Integration
+To get started with GitHub actions, we'll first need to make a folder in the root of our repository called `.github`. Inside that folder, add a nested folder called `workflows`, and inside there make a file called `main.yml`. Inside that file, define a `name:` field, with a name like `name: automated unit tests`. We'll run this `on: push` to `branches: [ master ]`.
+
+```yml
+name: automated unit tests
+
+on:
+  push:
+    branches: [ master ]
+```
+
+Next, we define our `jobs:`, of which we only have one, `run-tests:`, which will have a `name:` field defined as something like `name: Run unit tests`. It also `runs-on: ubuntu-latest`.
+
+```yml
+jobs:
+  run-tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+```
+
+Our job has `steps:`, which consist of things like `- name: clone repository` (which `uses: actions/checkout@v2.5.0`) and `- name: set up python` (which `uses: actions/setup-python@v4`, in tandem `with:` a `python-version: '3.11'`).
+
+```yml
+steps:
+- name: clone repository
+  uses: actions/checkout@v2.5.0
+- name: set up python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.11'
+```
+
+Finally, the code to be run, whose `name:` is something like `run unit tests`, and whose job is to `run: python3 test_RomanNumeralConverter.py`.
+
+```yml
+- name: run unit tests
+  run: python3 test_RomanNumeralConverter.py
+```
+
+Commit the code you've written and push it to the remote repository! If there's an issue, you'll receive an email pretty quick—GitHub sends emails by default if an automated job fails to run for whatever reason. However, if it runs successfully, you can look on the repository's page on GitHub and see the test results, along with all of the output.
