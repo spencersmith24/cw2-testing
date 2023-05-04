@@ -83,12 +83,12 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-Our job has `steps:`, which consist of things like `- name: clone repository` (which `uses: actions/checkout@v2.5.0`) and `- name: set up python` (which `uses: actions/setup-python@v4`, in tandem `with:` a `python-version: '3.11'`).
+Our job has `steps:`, which consist of things like `- name: clone repository` (which `uses: actions/checkout@v3.5.2`) and `- name: set up python` (which `uses: actions/setup-python@v4`, in tandem `with:` a `python-version: '3.11'`).
 
 ```yml
 steps:
 - name: clone repository
-  uses: actions/checkout@v2.5.0
+  uses: actions/checkout@v3.5.2
 - name: set up python
   uses: actions/setup-python@v4
   with:
