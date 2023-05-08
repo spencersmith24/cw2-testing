@@ -106,4 +106,5 @@ Commit the code you've written and push it to the remote repository! If there's 
 
 ![image](https://user-images.githubusercontent.com/70546234/236312333-5ba17fb0-1c07-482d-b939-f2dcc02b62dd.png)
 
-## Test-Driven Development
+## Test-Driven Development (TDD)
+Using TDD, tests are developed either before or in tandem with code that is to be written. For our purposes and for this lab, we will be developing tests before writing any code and using them as a specification for the code we are to write. Here, we'll be developing a small script that 
