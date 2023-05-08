@@ -107,4 +107,12 @@ Commit the code you've written and push it to the remote repository! If there's 
 ![image](https://user-images.githubusercontent.com/70546234/236312333-5ba17fb0-1c07-482d-b939-f2dcc02b62dd.png)
 
 ## Test-Driven Development (TDD)
-Using TDD, tests are developed either before or in tandem with code that is to be written. For our purposes and for this lab, we will be developing tests before writing any code and using them as a specification for the code we are to write. Here, we'll be developing a small script that 
+Using TDD, tests are developed either before or in tandem with code that is to be written. For our purposes and for this lab, we will be developing tests before writing any code and using them as a specification for the code we are to write. Here, we'll be developing a small module that converts a few different currencies around the world. This converter should support converting from USD into three different currencies: `"JPY"`, `"EGP"`, and `"ARS"`. Anything else should raise a `LookupError`, and negative currency provided should raise a `ValueError`. The default value for the amount of currency if not provided should be 1 USD.<br>
+With this specification, we can write some unit tests to serve as a more concrete specification for exactly how every part of this module works, and an easily-runnable progress report as to what we've got done and what we still need to do.
+
+### Unit tests
+Begin by making a folder in the root of this repository called `currency_converter`. Inside, make two files: `test_currency_converter.py` and `currency_converter.py`. We'll start in the `test_currency_converter.py` file.
+
+* Import `TestCase` and `main` from `unittest`
+* Import `convert` from `currency_converter`
+* Create a class `TestCurrencyConverter` that extends from the `TestCase` class you just imported
