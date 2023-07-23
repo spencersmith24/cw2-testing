@@ -81,5 +81,6 @@ if __name__ == "__main__":
     while True:
         number = input("Input a number to convert or ‘q’ to quit\n>> ")
         if number == 'q': break
-        try: print(converter[int(number)])
+        try: int(number)
         except ValueError: print(converter[number])
+        else: print(converter[int(number)])
