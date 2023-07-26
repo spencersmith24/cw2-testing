@@ -1,0 +1,23 @@
+name: continuous integration
+
+# Triggers section
+
+on:
+  push:
+    branches: [ master ]
+
+#Jobs section
+
+jobs:
+  run-roman-tests:
+    name: RomanNumeralConverter.to_roman tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: clone
+      uses: actions/checkout@v2.5.0
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: run tests
+      run: python test_RomanNumeralConverter.py
