@@ -85,7 +85,7 @@ jobs:
 
 Our job has `steps:`, which consist of things like `- name: clone repository` (which `uses: actions/checkout@v3.5.2`) and `- name: set up python` (which `uses: actions/setup-python@v4`, in tandem `with:` a `python-version: '3.11'`).
 
-> ***Note:*** This should be on the same indentation level as `runs-on:`, with everything below `steps` indented another level. YAML is very particular about indentation!
+> ***Note:** This should be on the same indentation level as `runs-on:`, with everything below `steps` indented another level. YAML is very particular about indentation!*
 
 ```yml
 steps:
