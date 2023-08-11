@@ -47,7 +47,7 @@ For this test, we'll have to access the private cache attribute of the `RomanNum
 
 ```py
 def test_from_roman_cache(self):
-    self.converter._RomanNumeralConverter__roman_to_arabic_cache["I"] = "test value"
+    self.converter._RomanNumeralConverter__roman_to_arabic_cache["i"] = "test value"
     self.assertEqual(self.converter.from_roman("I"), "test value")
 ```
 
@@ -58,7 +58,7 @@ Here, in `test_from_roman_appends_cache`, we can flip the order of the last test
 def test_from_roman_appends_cache(self):
     self.converter.from_roman("lxxiii") # an arbitrary value
     self.assertEqual(
-        self.converter._RomanNumeralConverter__roman_to_arabic_cache["LXXIII"],
+        self.converter._RomanNumeralConverter__roman_to_arabic_cache["lxxiii"],
         73
     )
 ```
