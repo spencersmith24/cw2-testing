@@ -1,0 +1,19 @@
+name: automated unit tests
+
+on:
+    push:
+        branches: [ master ]
+
+        jobs:
+            run-tests:
+                name: Run unit tests
+                runs-on: ubuntu-latest
+                steps:
+                - name: clone repository
+                uses: actions/checkout@v3.5.2
+                - name: set up python
+                uses: actions/setup-python@v4
+                    with:
+                        python-version: '3.11'
+                - name: run unit tests
+                    run: python3 test_RomanNumeralConverter.py

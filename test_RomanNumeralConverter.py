@@ -8,14 +8,14 @@ class TestRomanNumeralConverter(TestCase):
 
     def tearDown(self):
         del self.converter
-    
+
     def test_to_roman_conversion(self):
         self.assertEqual(self.converter.to_roman(578), "DLXXVIII")
-    
+
     def test_to_roman_negative(self):
         with self.assertRaises(ValueError):
             self.converter.to_roman(-1)
-    
+
     def test_to_roman_out_of_range(self):
         with self.assertRaises(ValueError):
             self.converter.to_roman(4000)
@@ -30,9 +30,29 @@ class TestRomanNumeralConverter(TestCase):
         self.assertEqual("test value", self.converter.to_roman(1))
         # here, we assert that it doesn't convert the value anew, and rather
         # sees that the value is in the cache, and just returns that
-    
-    def test_sanity(self):
-        self.assertEqual("XLVI", 
-            self.converter.to_roman(self.converter.from_roman("XLVI")))
 
-if __name__ == '__main__': main()
+    def test_sanity(self):
+        self.assertEqual("XLVI",
+                         self.converter.to_roman(self.converter.from_roman("XLVI")))
+
+    def test_from_roman_conversion(self):
+        self.assertEqual(self.converter.from_roman("lxxiii"), 73)
+
+    def test_from_roman_unsupported_char(self):
+        with self.assertRaises(ValueError):
+            self.converter.from_roman("q")
+
+    def test_from_roman_cache(self):
+        self.converter._RomanNumeralConverter__roman_to_arabic_cache["i"] = "test value"
+        self.assertEqual(self.converter.from_roman("I"), "test value")
+
+    def test_from_roman_appends_cache(self):
+        self.converter.from_roman("lxxiii")  # an arbitrary value
+        self.assertEqual(
+            self.converter._RomanNumeralConverter__roman_to_arabic_cache["lxxiii"],
+            73
+        )
+
+
+if __name__ == '__main__':
+    main()
